@@ -4,27 +4,50 @@ const blogs = [];
 function addBlog(event) {
   event.preventDefault();
 
-  const inputTitle = document.getElementById("titleinput").value;
-  const inputContent = document.getElementById("contentinput").value;
+  const inputTitle = document.getElementById("pronameinput").value;
+  const inputContent = document.getElementById("descriptioninput").value;
+
+  const inputStartDate = new Date(document.getElementById("startdate").value);
+  const inputEndDate = new Date(document.getElementById("enddate").value);
+  const seconds = inputEndDate - inputStartDate;
+  const inputDuration = Math.floor(seconds / 1000 / 60 / 60 / 24);
+
+  const inputJob = Array.from(
+    document.querySelectorAll('input[name="brand"]:checked')
+  ).map((cb) => cb.value);
+
   const inputImage = document.getElementById("imageinput").files;
-  
+
   const blobImage = URL.createObjectURL(inputImage[0]);
 
   const data = {
-    title: inputTitle,
-    content: inputContent,
+    name: inputTitle,
+
+    start: inputStartDate,
+    end: inputEndDate,
+    duration: inputDuration,
+
+    description: inputContent,
     image: blobImage,
-    author: "Natsu",
-    createdAt: new Date(),
+
+    job: inputJob,
+
+    // author: "Bambang",
+    // createdAt: new Date(),
   };
 
   blogs.unshift(data);
 
   console.log(blogs);
   renderBlog();
-  document.getElementById('myForm').reset();
+
+  document.getElementById("myForm").reset();
 }
 
+// //MENAMPILKAN DURATION
+// function getDistanceTime() {
+
+// }
 
 //MENAMPILKAN POST BLOG
 function renderBlog() {
@@ -32,32 +55,61 @@ function renderBlog() {
 
   for (let index = 0; index < blogs.length; index++) {
     html += `
-       
+         
 
-    <div class="post-container">
-      <div class="post-container-img">
-        <img 
-        src="${blogs[index].image}" 
-        alt=""
-        class="post-img">
+
+      <div class="container">
+      <div class="post-container">
+        <div class="post-container-img">
+          <img
+            src="${blogs[index].image}"
+            alt=""
+            class="post-img"
+          />
+        </div>
+
+        <div><h3>${blogs[index].name}</h3></div>
+
+        <div>
+          <p class="content-text4">Duration: ${blogs[index].duration} days</p>
+        </div>
+
+        <p class="content-text2" rows="4">${blogs[index].description}</p>
       </div>
-      <div class="post-text">
-        <h3>${blogs[index].title}</h3>
-        <p>${blogs[index].createdAt} | ${blogs[index].author}</p>
-        <p>${blogs[index].content}</p>
-        <p>${getDistanceTime(blogs[index].createdAt)}</p>
+
+      <div class="bottom-text">
+        <div>
+            <p class="content-text3">${blogs[index].job}</p>
+          </div>
+
+
+          <div class="post-btn">
+            <div>
+                <button>edit</button>
+            </div>
+            <div>
+                <button class="delete-btn">delete</button>
+            </div>
+          </div>
       </div>
     </div>
-        `;
+          `;
   }
 
-  document.getElementById("contents").innerHTML = html;
+  document.getElementById("postblog").innerHTML = html;
+
+  // Add event listener for the delete button
+  postblog.querySelector(".delete-btn").addEventListener("click", function () {
+    postblog.remove(); // Remove the card
+
+    // Clear form fields
+    document.getElementById("myForm").reset();
+  });
 }
 
 renderBlog();
 
-
-//MENAMPILKAN DURATION
+//MENAMPILKAN WAKTU POST
 const months = [
   "Jan",
   "Feb",
@@ -77,23 +129,19 @@ function getDistanceTime(timePost) {
   const timeNow = new Date();
   const distance = timeNow - timePost; // hasilnya miliseconds => 1 detik = 1000ms
 
-  // seconds, minutes, hours, day
-  // round => membulatkan ke angkat terdekat | 7.3 => 7 | 7.5 => 8
-  // floor => membulatkan ke bawah | 7.9 => 7 | 7.99 => 7
-  // ceil => membulatkan ke atas | 8.01 => 9 | 8.3 => 9
   const seconds = Math.floor(distance / 1000);
   const minutes = Math.floor(seconds / 60);
   const hours = Math.floor(minutes / 60);
   const day = Math.floor(hours / 24);
 
-  if(seconds < 60) {
-    return `${seconds} seconds ago`
+  if (seconds < 60) {
+    return `${seconds} seconds ago`;
   } else if (minutes < 60) {
-    return `${minutes} minutes ago`
-  } else if(hours < 60) {
-    return `${hours} hours ago`
-  } else if(day < 24) {
-    return `${day} day ago`
+    return `${minutes} minutes ago`;
+  } else if (hours < 60) {
+    return `${hours} hours ago`;
+  } else if (day < 24) {
+    return `${day} day ago`;
   }
 }
 
