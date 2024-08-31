@@ -1,0 +1,31 @@
+.post-container{
+    width: 550px;
+    /* height: 450px; */
+    margin: 20px auto;
+    padding: 10px;
+    background-color: rgb(201, 201, 201);
+    display: flex;
+    flex-direction: row;
+    border: none; 
+    /* align-items: center; */
+    /* text-align: center; */
+    border-radius: 10px;
+    /* box-shadow: 5px 5px 5px gray; */
+    gap: 20px;
+}
+
+.post-container-img{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.post-img{
+    justify-content: center;
+    border-radius: 10px;
+    width: 200px;
+    height: 150px;
+    display: flex;
+    object-fit: cover;
+}

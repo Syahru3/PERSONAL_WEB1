@@ -1,0 +1,133 @@
+.form-container2{
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    width: 550px;
+    padding: 10px;
+    margin: 20px auto;
+}
+
+.form-container2 h1{
+    text-align: center;
+}
+
+.blog-proname,
+.blog-startdate,
+.blog-enddate,
+.blog-description,
+.blog-technologies,
+.blog-upload{
+    margin-bottom: 15px;
+    font-weight: bold;
+}
+
+.blog-date-container{
+    display: flex;
+    flex-direction: row;
+    gap: 20px;
+}
+
+.blog-startdate,
+.blog-enddate{
+    width: 100%;
+}
+
+.blog-input,
+.blog-textarea{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    border-style: none;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.blog-textarea{
+    resize: vertical;
+}
+
+.blog-checkbox{
+    display: flex;
+    flex-direction: row;
+    gap: 200px;
+    margin-bottom: 15px;
+}
+
+.blog-box{
+    padding: 5px;
+}
+
+.blog-upload{
+    background-color: white;
+    border-radius: 5px;
+}
+
+/* BUTTON */
+.submit-btn-div{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    
+}
+
+.submit-btn-div button{
+    width: 80px;
+    padding: 7px;
+    background-color: gray;
+    color: white;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.submit-btn-div button:hover{
+    background-color: orangered;
+    transition: background-color 0.3s;
+  }
+
+/* UPLOAD IMAGE */
+.file-input-wrapper {
+    box-sizing: border-box;
+    /* position: relative; */
+    display: flex;
+    align-items: center;
+    /* border: 2px solid #ddd; */
+    border-radius: 5px;
+    padding: 0px;
+    background-color: white;
+    margin-bottom: 20px;
+    width: 100%;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+
+/* #fileInput {
+    display: none;
+} */
+
+/* label[for="fileInput"] {
+    display: inline-block;
+    background-color: skyblue;
+    color: #fff;
+    padding: 10px 20px;
+    border-radius: 5px 0px 0px 5px;
+    cursor: pointer;
+    margin-right: 15px;
+    transition: background-color 0.3s;
+} */
+
+/* label[for="fileInput"]:hover {
+    background-color: purple;
+} */
+
+/* #fileName {
+    flex-grow: 1;
+    font-size: 14px;
+    color: #555;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+} */

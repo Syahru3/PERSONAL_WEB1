@@ -1,0 +1,170 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Date Duration Form with Image Upload and Checkbox</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f4f4f4;
+        }
+
+        .form-container {
+            background-color: #fff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+            width: 300px;
+            text-align: center;
+        }
+
+        .form-container h2 {
+            margin-bottom: 20px;
+            color: #333;
+        }
+
+        .form-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .form-group input[type="date"],
+        .form-group input[type="file"],
+        .form-group button {
+            width: 100%;
+            padding: 8px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+
+        .form-group button {
+            background-color: #28a745;
+            color: #fff;
+            border: none;
+            cursor: pointer;
+            font-size: 16px;
+        }
+
+        .form-group button:hover {
+            background-color: #218838;
+        }
+
+        .checkbox-group {
+            margin-bottom: 15px;
+            text-align: left;
+        }
+
+        .checkbox-group label {
+            display: block;
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-right: 10px;
+        }
+
+        .result {
+            margin-top: 20px;
+            font-size: 16px;
+            font-weight: bold;
+            color: #333;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Form with Date, Image & Checkbox</h2>
+
+        <div class="form-group">
+            <label for="startDate">Start Date:</label>
+            <input type="date" id="startDate" name="startDate">
+        </div>
+
+        <div class="form-group">
+            <label for="endDate">End Date:</label>
+            <input type="date" id="endDate" name="endDate">
+        </div>
+
+        <div class="form-group">
+            <label for="uploadImage">Upload Image:</label>
+            <input type="file" id="uploadImage" name="uploadImage" accept="image/*">
+        </div>
+
+        <div class="checkbox-group">
+            <label>Select Laptop Brand:</label>
+            <div>
+                <input type="checkbox" id="asus" name="brand" value="Asus">
+                <label for="asus">Asus</label>
+            </div>
+            <div>
+                <input type="checkbox" id="acer" name="brand" value="Acer">
+                <label for="acer">Acer</label>
+            </div>
+            <div>
+                <input type="checkbox" id="lenovo" name="brand" value="Lenovo">
+                <label for="lenovo">Lenovo</label>
+            </div>
+            <div>
+                <input type="checkbox" id="axioo" name="brand" value="Axioo">
+                <label for="axioo">Axioo</label>
+            </div>
+        </div>
+
+        <div class="form-group">
+            <button onclick="handleSubmit()">Post</button>
+        </div>
+
+        <div id="result" class="result"></div>
+    </div>
+
+    <script>
+        function calculateDuration(startDate, endDate) {
+            return Math.ceil((endDate - startDate) / (1000 * 60 * 60 * 24));
+        }
+
+        function handleSubmit() {
+            const startDate = new Date(document.getElementById('startDate').value);
+            const endDate = new Date(document.getElementById('endDate').value);
+            const image = document.getElementById('uploadImage').files[0];
+            const selectedBrands = Array.from(document.querySelectorAll('input[name="brand"]:checked')).map(cb => cb.value);
+
+            let resultText = '';
+
+            if (startDate && endDate) {
+                const duration = calculateDuration(startDate, endDate);
+                resultText += `Duration: ${duration} days\n`;
+            } else {
+                resultText += 'Please select both dates.\n';
+            }
+
+            if (image) {
+                resultText += `Uploaded Image: ${image.name}\n`;
+            } else {
+                resultText += 'No image uploaded.\n';
+            }
+
+            if (selectedBrands.length > 0) {
+                resultText += `Selected Brands: ${selectedBrands.join(', ')}\n`;
+            } else {
+                resultText += 'No brands selected.\n';
+            }
+
+            document.getElementById('result').innerText = resultText;
+        }
+    </script>
+</body>
+</html>

@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Contact Me</title>
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/contact.css" />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="navbar">
+        <div>
+          <ul class="navbar-link">
+            <li>
+              <a href="">
+                <img
+                  src="/assets/picture/logo-dumbways.png"
+                  alt=""
+                  style="width: 50px"
+                />
+              </a>
+            </li>
+
+            <li>
+              <a href="/index.html">Home</a>
+            </li>
+
+            <li>
+              <a href="/blog.html">Blog</a>
+            </li>
+
+            <li>
+              <a href="/testimonial.html">Testimonial</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <button class="button-1">
+            <a href="/contact.html">
+              <p>Contact Me</p>
+            </a>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- NAV -->
+
+    <!-- FROM -->
+    <div class="form-container1">
+      <h1>GET IN TOUCH</h1>
+
+      <form 
+      onsubmit="sendEmail(event)"
+      id="myForm">
+        <div class="blog-name">
+          <label for=""> Name </label>
+          <input
+            class="blog-input"
+            id="inputname"
+            placeholder="Enter your name..."
+          />
+        </div>
+
+        <div class="blog-email">
+          <label for=""> Email </label>
+          <input
+            class="blog-input"
+            id="inputemail"
+            placeholder="Enter your email..."
+          />
+        </div>
+
+        <div class="blog-number">
+          <label for=""> Phone Number </label>
+          <input
+            class="blog-input"
+            id="inputnumber"
+            placeholder="Enter your phone number..."
+          />
+        </div>
+
+        <div class="blog-option">
+          <label for=""> Subject </label>
+          <select class="blog-input" id="subject">
+            <option value="" disabled selected>Select an Option</option>
+            <option value="Frontend Developer">Frontend Developer</option>
+            <option value="Backend Developer">Backend Developer</option>
+            <option value="Fullstack Developer">Fullstack Developer</option>
+          </select>
+        </div>
+
+        <div class="blog-message">
+          <label for=""> Your Message </label>
+          <textarea class="blog-textarea" rows="4" id="message"></textarea>
+        </div>
+
+        <div class="submit-btn-div">
+          <input class="submit-btn" type="submit" value="Submit" />
+        </div>
+
+      </form>
+    </div>
+    <!-- FROM -->
+
+    <script src="/assets/js/contact.js"></script>
+  </body>
+</html>

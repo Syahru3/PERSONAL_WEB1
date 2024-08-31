@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Elegant Form</title>
+    <style>
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f0f4f8;
+        }
+
+        .form-container {
+            background-color: #ffffff;
+            padding: 30px;
+            border-radius: 15px;
+            box-shadow: 0 8px 16px rgba(0, 0, 0, 0.1);
+            max-width: 400px;
+            width: 100%;
+        }
+
+        .form-container h2 {
+            text-align: center;
+            color: #333;
+            margin-bottom: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 20px;
+        }
+
+        .form-group label {
+            display: block;
+            margin-bottom: 8px;
+            font-weight: bold;
+            color: #555;
+        }
+
+        .form-group input[type="text"], 
+        .form-group input[type="file"] {
+            width: 100%;
+            padding: 10px 15px;
+            font-size: 16px;
+            border: 1px solid #ccc;
+            border-radius: 10px;
+            transition: border-color 0.3s ease;
+        }
+
+        .form-group input[type="text"]:focus, 
+        .form-group input[type="file"]:focus {
+            border-color: #007bff;
+            outline: none;
+        }
+
+        .form-group input[type="file"] {
+            padding: 10px 0;
+            background-color: #f9f9f9;
+            cursor: pointer;
+        }
+
+        .form-group input[type="file"]::file-selector-button {
+            padding: 10px 20px;
+            border: none;
+            border-radius: 10px;
+            background-color: #28a745;
+            color: #fff;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+            font-size: 16px;
+        }
+
+        .form-group input[type="file"]::file-selector-button:hover {
+            background-color: #007bff;
+        }
+
+        .form-group button {
+            width: 100%;
+            padding: 12px 20px;
+            font-size: 18px;
+            background-color: #007bff;
+            color: #fff;
+            border: none;
+            border-radius: 10px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .form-group button:hover {
+            background-color: #0056b3;
+        }
+
+        .filename {
+            font-size: 14px;
+            color: #666;
+            margin-top: 10px;
+            display: block;
+        }
+    </style>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Upload Your Image</h2>
+        <div class="form-group">
+            <label for="name">Name:</label>
+            <input type="text" id="name" name="name" placeholder="Enter your name">
+        </div>
+        
+        <div class="form-group">
+            <label for="uploadImage">Upload Image:</label>
+            <input type="file" id="uploadImage" name="uploadImage" accept="image/*" onchange="displayFileName()">
+            <span id="fileName" class="filename">No file selected</span>
+        </div>
+        
+        <div class="form-group">
+            <button type="button" onclick="submitForm()">Submit</button>
+        </div>
+    </div>
+
+    <script>
+        function displayFileName() {
+            const fileInput = document.getElementById('uploadImage');
+            const fileNameSpan = document.getElementById('fileName');
+            const file = fileInput.files[0];
+            if (file) {
+                fileNameSpan.textContent = file.name;
+            } else {
+                fileNameSpan.textContent = 'No file selected';
+            }
+        }
+
+        function submitForm() {
+            const name = document.getElementById('name').value;
+            const fileInput = document.getElementById('uploadImage');
+            const file = fileInput.files[0];
+
+            if (name && file) {
+                alert(`Name: ${name}\nFile: ${file.name}\nForm submitted successfully!`);
+            } else {
+                alert('Please fill in your name and select an image.');
+            }
+        }
+    </script>
+</body>
+</html>

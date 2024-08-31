@@ -1,0 +1,76 @@
+/* .form-container1{
+    background-color: blue;
+    width: 80%;
+    margin: 20px auto;
+} */
+
+.form-container1{
+    background-color: #f8f8f8;
+    border-radius: 10px;
+    width: 550px;
+    padding: 10px;
+    margin: 20px auto;
+}
+
+.form-container1 h1{
+    text-align: center;
+}
+
+.blog-name,
+.blog-email,
+.blog-number,
+.blog-option,
+.blog-message{
+    font-weight: bold;
+    margin-bottom: 15px;
+}
+
+.blog-input,
+.blog-textarea{
+    box-sizing: border-box;
+    width: 100%;
+    padding: 5px;
+    border-radius: 5px;
+    font-weight: 500;
+    font-size: 16px;
+    color: #536387;
+    outline: none;
+    border-style: none;
+    box-shadow: 0px 3px 8px rgba(0, 0, 0, 0.05);
+}
+
+.blog-textarea{
+    resize: vertical;
+}
+
+.submit-btn-div{
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+}
+
+/* .blog-btn{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: rgb(96, 96, 96);
+    border: none;
+    cursor: pointer;
+    border-radius: 10px;
+    padding: -20px 5px;
+    width: 50px;
+    height: 30px;
+    margin-right: 10px;s
+} */
+
+.submit-btn{
+    background-color: gray;
+    color: white;
+    padding: 7px;
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+}

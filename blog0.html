@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/blog.css" />
+    <link rel="stylesheet" href="/post.css">
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="navbar">
+        <div>
+          <ul class="navbar-link">
+            <li>
+              <a href="">
+                <img
+                  src="/assets/picture/logo-dumbways.png"
+                  alt=""
+                  style="width: 50px"
+                />
+              </a>
+            </li>
+
+            <li>
+              <a href="/index.html">Home</a>
+            </li>
+
+            <li>
+              <a href="/blog.html">Blog</a>
+            </li>
+
+            <li>
+              <a href="/testimonial.html">Testimonial</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <button class="button-1">
+            <a href="/contact.html">
+              <p>Contact Me</p>
+            </a>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- NAV -->
+
+    <!-- FORM -->
+    <div class="form-container2">
+      <h1>ADD MY PROJECT</h1>
+
+      <form onsubmit="addBlog(event)" id="myForm">
+        <div class="blog-title">
+          <label for=""> Title </label>
+          <input
+            class="blog-input"
+            id="titleinput"
+            placeholder="Enter title here..."
+          />
+        </div>
+
+        <div class="blog-content">
+          <label for=""> Content </label>
+          <textarea class="blog-textarea" rows="4" id="contentinput"></textarea>
+        </div>
+
+        <div>
+          <label for=""> Upload Image </label>
+          <div class="file-input-wrapper">
+            <input type="file" id="imageinput" />
+          </div>
+        </div>
+
+        <div class="submit-btn-div">
+          <button type="submit">Post Blog</button>
+        </div>
+      </form>
+    </div>
+    <!-- FORM -->
+
+    <hr class="line" />
+
+    <!-- CONTENT -->
+    <div id="contents" class="blog-list">
+      <!-- dynamic content would bu here -->
+    </div>
+    <!-- CONTENT -->
+
+    <!-- EX CARD -->
+     <div class="post-container">
+      <div class="post-container-img">
+        <img 
+        src="https://i.redd.it/3clm9sgvtz091.jpg" 
+        alt=""
+        class="post-img">
+      </div>
+      <div class="post-text">
+        <h3>Hallo Bandung</h3>
+        <p>time | Natsu</p>
+        <p>Lorem ipsum dolor sit amet consectetur adipisicing elit. 
+          Molestias a architecto voluptatibus atque exercitationem 
+          perferendis minima quos nihil incidunt debitis natus voluptate 
+          quas similique laboriosam dolorem ex dignissimos, suscipit 
+          quia.
+        </p>
+      </div>
+     </div>
+    <!-- EX CARD -->
+
+    <script src="/assets/js/blog.js"></script>
+  </body>
+</html>

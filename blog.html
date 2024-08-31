@@ -1,11 +1,262 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
-</head>
-<body>
-    
-</body>
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Blog</title>
+    <link rel="stylesheet" href="/navbar.css" />
+    <link rel="stylesheet" href="/blog.css" />
+    <link rel="stylesheet" href="/post.css" />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css"
+    />
+  </head>
+  <body>
+    <!-- NAV -->
+    <nav>
+      <div class="navbar">
+        <div>
+          <ul class="navbar-link">
+            <li>
+              <a href="">
+                <img
+                  src="/assets/picture/logo-dumbways.png"
+                  alt=""
+                  style="width: 50px"
+                />
+              </a>
+            </li>
+
+            <li>
+              <a href="/index.html">Home</a>
+            </li>
+
+            <li>
+              <a href="/blog.html">Blog</a>
+            </li>
+
+            <li>
+              <a href="/testimonial.html">Testimonial</a>
+            </li>
+          </ul>
+        </div>
+
+        <div>
+          <button class="button-1">
+            <a href="/contact.html">
+              <p>Contact Me</p>
+            </a>
+          </button>
+        </div>
+      </div>
+    </nav>
+    <!-- NAV -->
+
+    <!-- FORM -->
+    <div class="form-container2">
+      <h1>ADD MY PROJECT</h1>
+
+      <form onsubmit="addBlog(event)" id="myForm">
+        <div class="blog-proname">
+          <label for=""> Title </label>
+          <input
+            class="blog-input"
+            id="pronameinput"
+            placeholder="Enter title here..."
+          />
+        </div>
+
+        <div class="blog-date-container">
+          <div class="blog-startdate">
+            <label for="startDate">Start Date:</label>
+            <input
+              class="blog-input"
+              type="date"
+              id="startdate"
+              name="startDate"
+            />
+          </div>
+
+          <div class="blog-enddate">
+            <label for="enddate">End Date:</label>
+            <input class="blog-input" type="date" id="enddate" name="endDate" />
+          </div>
+        </div>
+
+        <div class="blog-description">
+          <label for=""> Description </label>
+          <textarea
+            class="blog-textarea"
+            rows="4"
+            id="descriptioninput"
+          ></textarea>
+        </div>
+
+        <div>
+          <div class="blog-technologies">
+            <label for=""> Technologies </label>
+          </div>
+          <div class="blog-checkbox">
+            <div>
+              <div>
+                <input
+                  class="blog-box"
+                  type="checkbox"
+                  id="asus"
+                  name="brand"
+                  value="Node JS"
+                />
+                <label for="asus">Node JS</label>
+              </div>
+              <div>
+                <input
+                  class="blog-box"
+                  type="checkbox"
+                  id="acer"
+                  name="brand"
+                  value="React JS"
+                />
+                <label for="acer">React JS</label>
+              </div>
+            </div>
+
+            <div>
+              <div>
+                <input
+                  class="blog-box"
+                  type="checkbox"
+                  id="lenovo"
+                  name="brand"
+                  value="Next JS"
+                />
+                <label for="lenovo">Next JS</label>
+              </div>
+              <div>
+                <input
+                  class="blog-box"
+                  type="checkbox"
+                  id="axioo"
+                  name="brand"
+                  value="TypeScript"
+                />
+                <label for="axioo">TypeScript</label>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <div style="font-weight: bold;">
+          <label for=""> Upload Image </label>
+          <div class="blog-upload">
+            <input class="blog-input" type="file" id="imageinput" />
+          </div>
+        </div>
+
+        <div class="submit-btn-div">
+          <button type="submit">Submit</button>
+        </div>
+      </form>
+    </div>
+    <!-- FORM -->
+
+    <!-- <hr class="line" /> -->
+
+    <div style=>
+      <h1 style="text-align: center; background-color: #f8f8f8; padding: 5%;">MY PROJECT</h1>
+    </div>
+
+    <div class="myproject-container">
+      <!-- EX CARD -->
+      <div class="container">
+        <div class="post-container">
+          <div class="post-container-img">
+            <img
+              src="https://m.media-amazon.com/images/I/810qmlFHXXL._AC_UF894,1000_QL80_.jpg"
+              alt=""
+              class="post-img"
+            />
+          </div>
+
+          <div><h3>Jojo App</h3></div>
+
+          <div>
+            <p class="content-text4">Duration: 5 days</p>
+          </div>
+
+          <p class="content-text2" rows="4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias a
+            architecto voluptatibus atque exercitationem perferendis
+          </p>
+        </div>
+
+        <div class="bottom-text">
+          <div>
+            <p class="content-text3">Next JS</p>
+          </div>
+
+          <div class="post-btn">
+            <div>
+              <button>edit</button>
+            </div>
+            <div>
+              <button>delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <div class="container">
+        <div class="post-container">
+          <div class="post-container-img">
+            <img
+              src="https://c4.wallpaperflare.com/wallpaper/607/366/343/sousou-no-frieren-anime-grass-flowers-white-hair-hd-wallpaper-thumb.jpg"
+              alt=""
+              class="post-img"
+            />
+          </div>
+
+          <div><h3>Frieren App</h3></div>
+
+          <div>
+            <p class="content-text4">Duration: 8 days</p>
+          </div>
+
+          <p class="content-text2" rows="4">
+            Lorem ipsum dolor sit amet consectetur adipisicing elit. Molestias a
+            architecto voluptatibus atque exercitationem perferendis
+          </p>
+        </div>
+
+        <div class="bottom-text">
+          <div>
+            <p class="content-text3">Node JS</p>
+          </div>
+
+          <div class="post-btn">
+            <div>
+              <button>edit</button>
+            </div>
+            <div>
+              <button class="delete-btn">delete</button>
+            </div>
+          </div>
+        </div>
+      </div>
+      <!-- EX CARD -->
+
+      <!-- CONTENT -->
+      <div id="postblog"></div>
+      <!-- CONTENT -->
+    </div>
+
+    <div>
+      <i class="fa-brands fa-node-js" style="display: none"></i>
+      <i class="fa-brands fa-react" style="display: none"></i>
+      <i class="fa-solid fa-n" style="display: none"></i>
+      <i class="fa-solid fa-quote-right" style="display: none"></i>
+    </div>
+
+    <script src="/blog.js"></script>
+  </body>
 </html>
