@@ -46,11 +46,13 @@
   margin-right: 10px;
 }
 
-
 @media screen and (max-width: 500px) {
   .column2 {
-    width: 170px;
+    width: 140px;
+    padding: 5px;
   }
 
-
+  .column2 p{
+    font-size: small;
+  }
 }
