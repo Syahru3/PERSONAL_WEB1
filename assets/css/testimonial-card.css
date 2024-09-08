@@ -45,3 +45,12 @@
   font-size: small;
   margin-right: 10px;
 }
+
+
+@media screen and (max-width: 500px) {
+  .column2 {
+    width: 170px;
+  }
+
+
+}
