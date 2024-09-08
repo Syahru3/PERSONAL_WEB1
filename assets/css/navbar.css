@@ -60,3 +60,9 @@ body{
     transform: scale(1.05);
     transition: 0.3s;
   }
+
+
+/* MEDIA SCREEN RESPONSIVE */
+@media screen and (max-width: 500px) {
+    
+}

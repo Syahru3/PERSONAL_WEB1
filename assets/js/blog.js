@@ -21,7 +21,7 @@ function addBlog(event) {
   const blobImage = URL.createObjectURL(inputImage[0]);
 
   const data = {
-    name: inputTitle,
+    title: inputTitle,
 
     start: inputStartDate,
     end: inputEndDate,
@@ -55,44 +55,29 @@ function renderBlog() {
 
   for (let index = 0; index < blogs.length; index++) {
     html += `
-         
 
-
-      <div class="container">
-      <div class="post-container">
-        <div class="post-container-img">
+     <div class="grid-item">
+        <div>
           <img
             src="${blogs[index].image}"
             alt=""
-            class="post-img"
           />
+          <h3>${blogs[index].title}</h3>
+          <p class="content-text1">Duration: ${blogs[index].duration} days</p>
+          <p>
+          ${blogs[index].description}
+          </p>
+          <p class="content-text3">${blogs[index].job}</p>
         </div>
-
-        <div><h3>${blogs[index].name}</h3></div>
-
-        <div>
-          <p class="content-text4">Duration: ${blogs[index].duration} days</p>
+        <div class="post-btn">
+          <div>
+            <button>edit</button>
+          </div>
+          <div>
+            <button class="delete-btn">delete</button>
+          </div>
         </div>
-
-        <p class="content-text2" rows="4">${blogs[index].description}</p>
       </div>
-
-      <div class="bottom-text">
-        <div>
-            <p class="content-text3">${blogs[index].job}</p>
-          </div>
-
-
-          <div class="post-btn">
-            <div>
-                <button>edit</button>
-            </div>
-            <div>
-                <button class="delete-btn">delete</button>
-            </div>
-          </div>
-      </div>
-    </div>
           `;
   }
 

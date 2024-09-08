@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Pinterest-like Responsive Grid</title>
+  <style>
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    body {
+      font-family: Arial, sans-serif;
+      background-color: #f4f4f4;
+      padding: 20px;
+    }
+
+    .grid-container {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(200px, 1fr));
+      grid-gap: 20px;
+    }
+
+    .grid-item {
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+      transition: transform 0.3s ease;
+    }
+
+    .grid-item:hover {
+      transform: scale(1.05);
+    }
+
+    .grid-item:nth-child(2n) {
+      grid-row: span 2;
+    }
+
+    .grid-item:nth-child(3n) {
+      grid-row: span 3;
+    }
+
+    .grid-item img {
+      width: 100%;
+      height: auto;
+      border-radius: 8px;
+    }
+  </style>
+</head>
+<body>
+
+  <div class="grid-container">
+
+    <div class="grid-item">
+      <img src="https://via.placeholder.com/200x150" alt="Card Image 1">
+      <p>Card 1 content</p>
+    </div>
+
+    <div class="grid-item">
+      <img src="https://via.placeholder.com/200x300" alt="Card Image 2">
+      <p>Card 2 content</p>
+    </div>
+
+    <div class="grid-item">
+      <img src="https://via.placeholder.com/200x400" alt="Card Image 3">
+      <p>Card 3 content</p>
+    </div>
+
+    <div class="grid-item">
+      <img src="https://via.placeholder.com/200x200" alt="Card Image 4">
+      <p>Card 4 content</p>
+    </div>
+
+    <div class="grid-item">
+      <img src="https://via.placeholder.com/200x250" alt="Card Image 5">
+      <p>Card 5 content</p>
+    </div>
+
+    <div class="grid-item">
+      <img src="https://via.placeholder.com/200x350" alt="Card Image 6">
+      <p>Card 6 content</p>
+    </div>
+    
+  </div>
+
+</body>
+</html>

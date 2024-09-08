@@ -1,0 +1,47 @@
+/* TEST CARD */
+.box2 {
+  box-sizing: border-box;
+}
+
+.test-container {
+  background-color: #343a40;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+
+  align-items: center;
+  align-content: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+/* TESTIMONIAL CARD */
+.column2 {
+  background-color: white;
+  border-radius: 20px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 200px;
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+.column2:hover {
+  transform: scale(1.05);
+}
+
+.card2-img {
+  border-radius: 15px;
+  width: 100%;
+  height: 150px;
+  display: flex;
+  object-fit: cover;
+}
+
+.card2-rating {
+  box-sizing: border-box;
+  text-align: right;
+  font-size: small;
+  margin-right: 10px;
+}
