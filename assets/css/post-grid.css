@@ -2,7 +2,7 @@
 .project-title {
   text-align: center;
   color: white;
-  background-color:#343a40;
+  background-color: #343a40;
   padding: 5px;
 }
 
@@ -10,7 +10,7 @@
 
 /* CONTAINER */
 .grid-container {
-  background-color:#343a40;
+  background-color: #343a40;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
@@ -36,6 +36,17 @@
   transform: scale(1.05);
 }
 
+.grid-item a{
+  text-decoration: none;
+}
+
+.grid-item a h3 {
+  white-space: nowrap;
+  overflow: hidden; 
+  text-overflow: ellipsis;  
+  color: #343a40;
+}
+
 /* POST IMAGE */
 .grid-item img {
   border-radius: 10px;
@@ -43,23 +54,25 @@
   height: 150px;
   display: flex;
   object-fit: cover;
-
-  /* width: 100%;
-  height: auto;
-  border-radius: 10px; */
 }
 
 /* TEXT ALIGN */
-.grid-item p{
-    text-align: justify;
+.grid-item p {
+  text-align: justify;
 }
 
-.content-text1{
+.content-text1 {
   font-size: small;
 }
 
-.content-text3{
+.content-text3 {
   color: grey;
+}
+
+.card-text1 {
+  white-space: nowrap;
+  overflow: hidden;
+  text-overflow: ellipsis;
 }
 
 /* BUTTON */

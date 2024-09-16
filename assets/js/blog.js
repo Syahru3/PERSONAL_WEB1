@@ -13,7 +13,7 @@ function addBlog(event) {
   const inputDuration = Math.floor(seconds / 1000 / 60 / 60 / 24);
 
   const inputJob = Array.from(
-    document.querySelectorAll('input[name="brand"]:checked')
+    document.querySelectorAll('input[name="technologies"]:checked')
   ).map((cb) => cb.value);
 
   const inputImage = document.getElementById("imageinput").files;

@@ -1,9 +1,8 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Blog</title>
+    <title>Add Blog</title>
     <!-- <link rel="stylesheet" href="/assets/css/navbar.css" /> -->
     <link rel="stylesheet" href="/assets/css/blog.css" />
     <link rel="stylesheet" href="/assets/css/post-grid.css" />
@@ -18,10 +17,7 @@
       crossorigin="anonymous"
     />
     <style>
-      .active {
-        color: orangered !important;
-        font-weight: bold !important;
-      }
+      .active { color: orangered !important; font-weight: bold !important; }
     </style>
   </head>
   <body>
@@ -50,20 +46,40 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/index.html"
-                >Home</a
-              >
+              <a class="nav-link" aria-current="page" href="/">Home</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="/blog.html">Blog</a>
+              <a class="nav-link active" href="blog">Blog</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/testimonial.html">Testimonial</a>
+              <a class="nav-link" href="testimonial">Testimonial</a>
             </li>
           </ul>
-          <a href="/contact.html" class="btn btn-outline-dark">Contact Me</a>
+
+          {{#if user}}
+            <h3 style="margin-right: 30px; color:orangered">Hello,
+              {{user.name}}</h3>
+            <a
+              style="margin-right: 10px;"
+              href="/logout"
+              class="btn btn-outline-danger"
+            >Logout</a>
+          {{else}}
+            <a
+              style="margin-right: 10px;"
+              href="/register"
+              class="btn btn-outline-warning"
+            >Register</a>
+            <a
+              style="margin-right: 10px;"
+              href="/login"
+              class="btn btn-outline-warning"
+            >Login</a>
+          {{/if}}
+
+          <a href="contact" class="btn btn-outline-dark">Contact Me</a>
         </div>
       </div>
     </nav>
@@ -71,17 +87,18 @@
 
     <!-- FORM -->
     <div class="form-container2">
-      <br>
+      <br />
       <h1>ADD MY PROJECT</h1>
-      <br>
+      <br />
 
-      <form onsubmit="addBlog(event)" id="myForm">
+      <form action="/add-blog" method="post">
         <div class="blog-proname">
           <label for=""> Title </label>
           <input
             class="blog-input"
             id="pronameinput"
             placeholder="Enter title here..."
+            name="title"
           />
         </div>
 
@@ -92,13 +109,13 @@
               class="blog-input"
               type="date"
               id="startdate"
-              name="startDate"
+              name="startdate"
             />
           </div>
 
           <div class="blog-enddate">
             <label for="enddate">End Date:</label>
-            <input class="blog-input" type="date" id="enddate" name="endDate" />
+            <input class="blog-input" type="date" id="enddate" name="enddate" />
           </div>
         </div>
 
@@ -108,7 +125,8 @@
             class="blog-textarea"
             rows="4"
             id="descriptioninput"
-            maxlength="200"
+            maxlength="5000"
+            name="content"
           ></textarea>
         </div>
 
@@ -123,7 +141,7 @@
                   class="blog-box"
                   type="checkbox"
                   id="asus"
-                  name="brand"
+                  name="technologies"
                   value="Node JS"
                 />
                 <label for="asus">Node JS</label>
@@ -133,7 +151,7 @@
                   class="blog-box"
                   type="checkbox"
                   id="acer"
-                  name="brand"
+                  name="technologies"
                   value="React JS"
                 />
                 <label for="acer">React JS</label>
@@ -146,7 +164,7 @@
                   class="blog-box"
                   type="checkbox"
                   id="lenovo"
-                  name="brand"
+                  name="technologies"
                   value="Next JS"
                 />
                 <label for="lenovo">Next JS</label>
@@ -156,7 +174,7 @@
                   class="blog-box"
                   type="checkbox"
                   id="axioo"
-                  name="brand"
+                  name="technologies"
                   value="TypeScript"
                 />
                 <label for="axioo">TypeScript</label>
@@ -166,9 +184,14 @@
         </div>
 
         <div style="font-weight: bold">
-          <label for=""> Upload Image </label>
+          <label for="image"> Upload Image </label>
           <div class="blog-upload">
-            <input class="blog-input" type="file" id="imageinput" />
+            <input
+              class="blog-input"
+              type="file"
+              id="imageinput"
+              name="image"
+            />
           </div>
         </div>
 
@@ -180,7 +203,7 @@
     <!-- FORM -->
 
     <div class="project-title">
-      <br>
+      <br />
       <h1>MY PROJECT</h1>
     </div>
 
@@ -213,7 +236,29 @@
     <!-- EXAMPLE CARD -->
 
     <!-- CONTENT -->
-    <section class="grid-container" id="postblog"></section>
+    <section class="grid-container">
+      {{#each blogs}}
+        <div class="grid-item">
+          <div>
+            <img src="" alt="ini gambar rusak" />
+            <h3>{{title}}</h3>
+            <p class="content-text1">Duration: days</p>
+            <p>
+              {{content}}
+            </p>
+            <p class="content-text3">{{technologies}}</p>
+          </div>
+          <div class="post-btn">
+            <div>
+              <button>edit</button>
+            </div>
+            <div>
+              <button class="delete-btn">delete</button>
+            </div>
+          </div>
+        </div>
+      {{/each}}
+    </section>
     <!-- CONTENT -->
 
     <div>

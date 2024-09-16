@@ -1,4 +1,3 @@
-<!DOCTYPE html>
 <html lang="en">
   <head>
     <meta charset="UTF-8" />
@@ -13,17 +12,14 @@
       crossorigin="anonymous"
     />
     <style>
-      .active {
-        color: orangered !important;
-        font-weight: bold !important;
-      }
+      .active { color: orangered !important; font-weight: bold !important; }
     </style>
   </head>
   <body>
     <!-- NAV -->
     <nav class="navbar navbar-expand-lg bg-body-tertiary">
       <div class="container-fluid">
-        <a class="navbar-brand" href="/Day 10/index.html">
+        <a class="navbar-brand" href="/Day 10/index">
           <img
             src="/assets/picture/logo-dumbways.png"
             style="width: 50px"
@@ -45,20 +41,40 @@
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
           <ul class="navbar-nav me-auto mb-2 mb-lg-0">
             <li class="nav-item">
-              <a class="nav-link" aria-current="page" href="/index.html"
-                >Home</a
-              >
+              <a class="nav-link" aria-current="page" href="/">Home</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/blog.html">Blog</a>
+              <a class="nav-link" href="blog">Blog</a>
             </li>
 
             <li class="nav-item">
-              <a class="nav-link" href="/testimonial.html">Testimonial</a>
+              <a class="nav-link" href="testimonial">Testimonial</a>
             </li>
           </ul>
-          <a href="/contact.html" class="btn btn-dark">Contact Me</a>
+
+          {{#if user}}
+            <h3 style="margin-right: 30px; color:orangered">Hello,
+              {{user.name}}</h3>
+            <a
+              style="margin-right: 10px;"
+              href="/logout"
+              class="btn btn-outline-danger"
+            >Logout</a>
+          {{else}}
+            <a
+              style="margin-right: 10px;"
+              href="/register"
+              class="btn btn-outline-warning"
+            >Register</a>
+            <a
+              style="margin-right: 10px;"
+              href="/login"
+              class="btn btn-outline-warning"
+            >Login</a>
+          {{/if}}
+
+          <a href="contact" class="btn btn-dark">Contact Me</a>
         </div>
       </div>
     </nav>

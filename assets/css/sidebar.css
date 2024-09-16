@@ -1,0 +1,133 @@
+.container {
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  margin: 20px auto;
+  background-color: #f8f9fa;
+  border-radius: 10px;
+  box-shadow: 5px 5px 5px gray;
+}
+
+/* ================================================================ */
+section {
+  /* flex: 3; */
+  width: 80%;
+  padding: 20px;
+  text-align: justify;
+  /* background-color: #f0f0f0; */
+  /* background-color: aqua; */
+}
+
+.con-text {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+}
+
+.con-text img {
+  width: 400px;
+  height: 250px;
+  object-fit: cover;
+  border-radius: 10px;
+}
+
+/* ================================================================ */
+/* ASIDE */
+aside {
+  /* flex: 1; */
+  width: 20%;
+  padding: 10px;
+  /* background-color: gray; */
+  margin-left: 20px;
+  max-height: 490px; /* Membatasi tinggi aside di desktop */
+  overflow-y: auto; /* Scroll secara vertikal di komputer */
+  border-radius: 10px;
+}
+
+.card {
+  /* position: relative; */
+  width: 95%; /* Lebar card */
+  height: 150px; /* Tinggi card */
+  margin: 10px auto;
+
+  background-size: cover; /* Meng-cover seluruh card tanpa distorsi */
+  background-position: center; /* Memposisikan gambar di tengah */
+  background-repeat: no-repeat; /* Menghindari pengulangan gambar */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+  border-radius: 10px; /* Membuat sudut card melengkung */
+  overflow: hidden;
+}
+
+.card:hover {
+  transform: scale(1.05);
+}
+
+.card-text {
+  position: absolute;
+  bottom: 10px;
+  left: 10px;
+  right: 10px; /* Membuat batas kanan untuk teks */
+  color: white;
+  font-size: 12px;
+  background-color: rgba(0, 0, 0, 0.5); /* Transparansi untuk teks */
+  padding: 5px;
+  border-radius: 5px;
+  
+  white-space: nowrap; /* Membuat teks tidak terputus menjadi beberapa baris */
+  overflow: hidden; /* Menghilangkan teks yang keluar area */
+  text-overflow: ellipsis; /* Menambahkan ... jika teks terlalu panjang */
+}
+
+.card-text:hover {
+  transform: scale(1.05);
+}
+
+/* Style tambahan untuk mempercantik scrollbar */
+aside::-webkit-scrollbar {
+  width: 8px; /* Lebar scrollbar vertikal */
+}
+aside::-webkit-scrollbar-thumb {
+  background-color: #888;
+  border-radius: 4px;
+}
+
+/* Media query untuk layar kecil */
+@media (max-width: 768px) {
+  .container {
+    flex-direction: column; /* Aside pindah ke bawah */
+  }
+
+  aside {
+    width: 100%;
+
+    max-height: none; /* Tidak ada batasan tinggi */
+    margin-left: 0;
+    margin-top: 20px;
+    display: flex;
+    flex-direction: row; /* Card tersusun horizontal */
+    overflow-x: auto; /* Scroll horizontal di HP */
+    overflow-y: hidden; /* Tidak ada scroll vertikal di HP */
+  }
+  .card {
+    min-width: 200px; /* Lebar minimal card di HP */
+    margin-right: 10px; /* Jarak antar card */
+    margin-bottom: 0; /* Hilangkan margin bawah di HP */
+  }
+
+  section {
+    width: 100%;
+  }
+
+  .con-text {
+    flex-direction: column;
+  }
+
+  .con-text img {
+    width: 100%;
+  }
+}
+
+/* Style tambahan untuk mempercantik scrollbar horizontal di HP */
+aside::-webkit-scrollbar {
+  height: 8px; /* Tinggi scrollbar di HP */
+}
