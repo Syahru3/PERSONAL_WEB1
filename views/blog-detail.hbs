@@ -44,7 +44,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="/blog">Blog</a>
+              <a class="nav-link active" href="blog">Add Project</a>
             </li>
 
             <li class="nav-item">
@@ -88,11 +88,12 @@
         <h1>{{data.title}}</h1>
         <br />
         <div class="con-text">
-          <img src="{{data.image}}" alt="default.jpg" />
+          <img src="/{{data.image}}" alt="default.jpg" />
           <div>
             <h5>Duration</h5>
-            <h5 style="color: gray;">{{data.startdate}} | {{data.enddate}}</h5>
-            <h5 style="color: gray;">{{data.duration}}</h5>
+            <h5 style="color: gray;">{{data.startDate}}
+              |
+              {{data.endDate}}<br />{{data.duration}}</h5>
             <br />
             <h5>Technologies</h5>
             <h5 style="color: gray;">{{data.technologies}}</h5>
@@ -108,12 +109,8 @@
 
       <aside>
         {{#each allBlogs}}
-          <div
-            class="card"
-            style="
-            background-image: url('{{image}}');
-          "
-          >
+          <div class="card" style="background-image: url('{{image}}');">
+            <img class="card-img" src="/{{image}}" alt="gambar rusak" />
             <a href="/blog-detail/{{id}}">
               <div class="card-text">
                 {{title}}

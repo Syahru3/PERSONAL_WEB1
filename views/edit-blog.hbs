@@ -50,7 +50,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="/blog">Blog</a>
+              <a class="nav-link active" href="/blog">Add Project</a>
             </li>
 
             <li class="nav-item">
@@ -69,7 +69,11 @@
       <h1>EDIT PROJECT</h1>
       <br />
 
-      <form method="post" action="/edit-blog/{{data.id}}">
+      <form
+        method="post"
+        action="/edit-blog/{{data.id}}"
+        enctype="multipart/form-data"
+      >
         <div class="blog-proname">
           <label for=""> Title </label>
           <input
@@ -78,6 +82,7 @@
             placeholder="Enter title here..."
             name="title"
             value="{{data.title}}"
+            required
           />
         </div>
 
@@ -87,9 +92,10 @@
             <input
               class="blog-input"
               type="date"
-              id="startdate"
-              name="startdate"
-              value="{{data.startdate}}"
+              id="startDate"
+              name="startDate"
+              value="{{data.startDate}}"
+              required
             />
           </div>
 
@@ -98,9 +104,10 @@
             <input
               class="blog-input"
               type="date"
-              id="enddate"
-              name="enddate"
-              value="{{data.enddate}}"
+              id="endDate"
+              name="endDate"
+              value="{{data.endDate}}"
+              required
             />
           </div>
         </div>
@@ -113,6 +120,7 @@
             id="descriptioninput"
             maxlength="200"
             name="content"
+            required
           >{{data.content}}</textarea>
         </div>
 
@@ -170,14 +178,42 @@
         </div>
 
         <div style="font-weight: bold">
-          <label for="image"> Upload Image </label>
+          <label for="image"> Previous Image </label>
           <div class="blog-upload">
-            <input
-              class="blog-input"
-              type="file"
-              id="imageinput"
-              name="image"
-            />
+            {{! ========================================================= }}
+            <input type="hidden" name="existImage" value="{{data.image}}" />
+
+            <!-- Upload image -->
+            <div class="d-flex flex-column mb-3">
+
+              {{#if data.image}}
+                <img
+                  src="/{{data.image}}"
+                  id="imagePreview"
+                  alt="Image Preview"
+                  class="img-fluid rounded-2 w-25 mb-3"
+                />
+              {{else}}
+                <img
+                  src=""
+                  id="imagePreview"
+                  alt="Image Preview"
+                  class="img-fluid rounded-2 w-25 mb-3"
+                  style="display: none;"
+                />
+              {{/if}}
+
+              <label for="image"> Upload New Image </label>
+              <input
+                class="blog-input"
+                type="file"
+                name="uploadImage"
+                id="uploadImage"
+                required
+              />
+            </div>
+            {{! ========================================================= }}
+
           </div>
         </div>
 

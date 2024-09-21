@@ -7,7 +7,7 @@ const path = require("path"); //bawaan path node js
 const bcrypt = require("bcrypt");
 const session = require("express-session");
 const flash = require("express-flash");
-const upload = require("./midlewares/upload-file"); //midleware multer
+const upload = require("./midlewares/upload-file");
 
 const blogModel = require("./models").blog;
 const userModel = require("./models").user;
@@ -36,11 +36,11 @@ app.use(flash());
 app.get("/", home);
 app.get("/blog", blog);
 app.get("/add-blog", addBlogView);
-app.post("/add-blog", upload.single("uploadImage"), addBlog);
+app.post("/", upload.single("image"), addBlog);
 
 app.get("/delete-blog/:id", deleteBlog); //penggunaan ":id" adalah properti
 app.get("/edit-blog/:id", editBlogView);
-app.post("/edit-blog/:id", upload.single("uploadImage"), editBlog);
+app.post("/edit-blog/:id", editBlog);
 
 app.get("/contact", contactMe);
 app.get("/testimonial", testimonial);
@@ -120,7 +120,7 @@ async function register(req, res) {
 
 async function logout(req, res) {
   try {
-    req.flash("success", "Successfully logged out");
+    req.flash("warning", "Anda Berhasil Logout!");
     req.session.destroy(() => {
       return res.redirect("/login");
     });
@@ -136,15 +136,34 @@ async function home(req, res) {
   const result = await blogModel.findAll();
   const user = req.session.user;
 
-  res.render("index", { data: result, user });
+  res.render("index", { data: result, user }); //
 }
 
 //BLOG
 async function blog(req, res) {
-  const result = await blogModel.findAll();
+  // const result = await blogModel.findAll();
+  const result = await blogModel.findAll({
+    include: [
+      {
+        model: userModel,
+      },
+    ],
+  });
+
+  const userResult = await userModel.findAll({
+    include: [
+      {
+        model: blogModel,
+      },
+    ],
+  });
+
+  // console.log("userResult", JSON.stringify(userResult, null, 2));
+  // console.log("userResult", userResult);
+
   const user = req.session.user;
 
-  res.render("blog", { data: result, user }); //data merujuk ke DB Postgres
+  res.render("/blog", { data: result, user }); //data merujuk ke DB Postgres
 }
 
 function addBlogView(req, res) {
@@ -180,7 +199,13 @@ async function addBlog(req, res) {
     technologies: technologiesString,
   });
 
-  res.redirect("/blog"); //langsung menuju page blog
+  // const user = req.session.user;
+
+  res.render("/blog");
+  // res.redirect("/blog"); //langsung menuju page blog
+  // console.log(newBlog);
+  // console.log("isi request body", req.body);
+  // console.log("file metadata", req.file.path);
 }
 
 //DELETE BUTTON
@@ -201,68 +226,56 @@ async function deleteBlog(req, res) {
     },
   });
 
-  res.redirect("/blog");
+  res.redirect("/");
 }
 
 //EDIT BUTTON PER id
 async function editBlogView(req, res) {
-  const user = req.session.user;
   const { id } = req.params;
   const result = await blogModel.findOne({
     where: {
       id: id,
     },
   });
-  if (!user) return res.redirect("/login"); //mengamankan routing
+
   if (!result) return res.render("not-found");
-  res.render("edit-blog", { data: result, user });
+
+  res.render("edit-blog", { data: result });
 }
 
 //EDIT PAGE
 async function editBlog(req, res) {
-  try {
-    const { id } = req.params;
-    const { title, startDate, endDate, content, existImage, technologies } =
-      req.body;
+  const { id } = req.params;
+  const { title, startDate, endDate, content, image, technologies } = req.body;
 
-    const technologiesArray = Array.isArray(technologies)
-      ? technologies
-      : [technologies];
-    const technologiesString = technologiesArray.join(", ");
+  const technologiesArray = Array.isArray(technologies)
+    ? technologies
+    : [technologies];
+  const technologiesString = technologiesArray.join(", ");
 
-    let imagePath = req.file.path;
-    const duration = durationTime(startDate, endDate);
+  // const imagePath = req.file.path;
+  // const userId = req.file.path.id;
+  const duration = durationTime(startDate, endDate);
 
-    const blog = await blogModel.findOne({
-      where: {
-        id: id,
-      },
-    });
+  const blog = await blogModel.findOne({
+    where: {
+      id: id,
+    },
+  });
 
-    if (!blog) return res.render("not-found");
+  if (!blog) return res.render("not-found");
 
-    blog.title = title;
-    blog.startDate = startDate;
-    blog.endDate = endDate;
-    blog.duration = duration;
-    blog.content = content;
-    blog.technologies = technologiesString;
+  blog.title = title;
+  blog.startDate = startDate;
+  blog.endDate = endDate;
+  (blog.duration = duration), (blog.content = content);
+  // (blog.image = imagePath), 
+  (blog.technologies = technologiesString);
 
-    if (req.file) {
-      blog.image = imagePath;
-    } else {
-      blog.image = existImage;
-    }
+  // const user = req.session.user;
 
-    await blog.save("/blog"); //upsert = update/insert untuk create jika primary kosong
-    res.redirect("/blog");
-
-    // req.flash("success", "Blog updated successfully!");
-    // return res.redirect("/blog");
-  } catch (error) {
-    // req.flash("error", "Something went wrong!");
-    return res.redirect("/blog");
-  }
+  await blog.save("/blog"); //upsert = update/insert untuk create jika primary kosong
+  res.redirect("/blog");
 }
 
 function contactMe(req, res) {
@@ -278,29 +291,19 @@ function testimonial(req, res) {
 }
 
 async function blogDetail(req, res) {
-  try {
-    const { id } = req.params;
-    const user = req.session.user;
+  const { id } = req.params;
+  const user = req.session.user;
+  const result = await blogModel.findOne({
+    where: {
+      id: id,
+    },
+  });
 
-    const result = await blogModel.findOne({
-      where: {
-        id: id,
-      },
-    });
+  // console.log("detail", result);
+  const allBlogs = await blogModel.findAll();
 
-    // console.log("detail", result);
-    const allBlogs = await blogModel.findAll();
-
-    if (!result) {
-      // return res.render("not-found");
-      return res.redirect("/");
-    }
-
-    res.render("blog-detail", { data: result, user, allBlogs });
-  } catch (error) {
-    console.error("Error in blogDetail:", error);
-    return res.redirect("/");
-  }
+  if (!result) return res.render("not-found");
+  res.render("blog-detail", { data: result, user, allBlogs }); //
 }
 
 //END ROUTING

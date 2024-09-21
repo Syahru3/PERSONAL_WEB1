@@ -25,25 +25,26 @@
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   width: 250px;
-  min-height: 300px;
+  height: 350px;
   padding: 10px;
   display: flex;
   flex-direction: column;
   justify-content: space-between;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
 }
 
 .grid-item:hover {
   transform: scale(1.05);
 }
 
-.grid-item a{
+.grid-item a {
   text-decoration: none;
 }
 
 .grid-item a h3 {
   white-space: nowrap;
-  overflow: hidden; 
-  text-overflow: ellipsis;  
+  overflow: hidden;
+  text-overflow: ellipsis;
   color: #343a40;
 }
 
@@ -54,6 +55,11 @@
   height: 150px;
   display: flex;
   object-fit: cover;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.grid-item img:hover {
+  transform: scale(1.05);
 }
 
 /* TEXT ALIGN */
@@ -99,6 +105,41 @@
 .post-btn button:hover {
   background-color: red;
   transition: background-color 0.3s;
+}
+
+/* PLUS IMG */
+.grid-item2 {
+  background-color: white;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  width: 250px;
+  height: 350px;
+  padding: 10px;
+  display: flex;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.grid-item2 a {
+  margin: auto;
+  width: 130px;
+  height: 130px;
+}
+
+.plus-img {
+  margin: auto;
+  width: 130px;
+  align-content: center;
+  cursor: pointer;
+  color: aqua;
+  transition: transform 0.4s ease, box-shadow 0.4s ease;
+}
+
+.grid-item2:hover {
+  transform: scale(1.05);
+}
+
+.plus-img:hover {
+  transform: scale(1.2);
 }
 
 /* MEDIA SCREEN */

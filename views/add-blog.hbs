@@ -50,7 +50,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="blog">Blog</a>
+              <a class="nav-link active" href="blog">Add Project</a>
             </li>
 
             <li class="nav-item">
@@ -58,26 +58,11 @@
             </li>
           </ul>
 
-          {{#if user}}
-            <h3 style="margin-right: 30px; color:orangered">Hello,
-              {{user.name}}</h3>
-            <a
-              style="margin-right: 10px;"
-              href="/logout"
-              class="btn btn-outline-danger"
-            >Logout</a>
-          {{else}}
-            <a
-              style="margin-right: 10px;"
-              href="/register"
-              class="btn btn-outline-warning"
-            >Register</a>
-            <a
-              style="margin-right: 10px;"
-              href="/login"
-              class="btn btn-outline-warning"
-            >Login</a>
-          {{/if}}
+          <a
+            style="margin-right: 10px;"
+            href="/logout"
+            class="btn btn-outline-danger"
+          >Logout</a>
 
           <a href="contact" class="btn btn-outline-dark">Contact Me</a>
         </div>
@@ -91,7 +76,7 @@
       <h1>ADD MY PROJECT</h1>
       <br />
 
-      <form action="/add-blog" method="post">
+      <form action="/add-blog" method="post" enctype="multipart/form-data">
         <div class="blog-proname">
           <label for=""> Title </label>
           <input
@@ -99,6 +84,7 @@
             id="pronameinput"
             placeholder="Enter title here..."
             name="title"
+            required
           />
         </div>
 
@@ -108,14 +94,21 @@
             <input
               class="blog-input"
               type="date"
-              id="startdate"
-              name="startdate"
+              id="startDate"
+              name="startDate"
+              required
             />
           </div>
 
           <div class="blog-enddate">
-            <label for="enddate">End Date:</label>
-            <input class="blog-input" type="date" id="enddate" name="enddate" />
+            <label for="endDate">End Date:</label>
+            <input
+              class="blog-input"
+              type="date"
+              id="endDate"
+              name="endDate"
+              required
+            />
           </div>
         </div>
 
@@ -127,6 +120,7 @@
             id="descriptioninput"
             maxlength="5000"
             name="content"
+            required
           ></textarea>
         </div>
 
@@ -185,14 +179,25 @@
 
         <div style="font-weight: bold">
           <label for="image"> Upload Image </label>
+
+          {{! <img
+            src=""
+            id="imagePreview"
+            alt="Image Preview"
+            class="img-fluid rounded-2 w-25 mb-3"
+            style="display: none;"
+          /> }}
+
           <div class="blog-upload">
             <input
               class="blog-input"
               type="file"
               id="imageinput"
-              name="image"
+              name="uploadImage"
+              required
             />
           </div>
+
         </div>
 
         <div class="submit-btn-div">
@@ -206,34 +211,6 @@
       <br />
       <h1>MY PROJECT</h1>
     </div>
-
-    <!-- EXAMPLE CARD -->
-    <!-- <div class="grid-item">
-        <div>
-          <img
-            src="https://m.media-amazon.com/images/I/810qmlFHXXL._AC_UF894,1000_QL80_.jpg"
-            alt=""
-          />
-          <h3>HEIHO</h3>
-          <p>Duration: 4 days</p>
-          <p>
-            Lorem ipsum dolor sit amet consectetur adipisicing elit. Officia
-            quos id ut nulla non excepturi aspernatur corporis, et dolorum?
-            Nemo, harum! Similique deserunt earum eos aliquam sed. Assumenda,
-            obcaecati nesciunt?
-          </p>
-          <p>Next JS</p>
-        </div>
-        <div class="post-btn">
-          <div>
-            <button>edit</button>
-          </div>
-          <div>
-            <button>delete</button>
-          </div>
-        </div>
-      </div> -->
-    <!-- EXAMPLE CARD -->
 
     <!-- CONTENT -->
     <section class="grid-container">

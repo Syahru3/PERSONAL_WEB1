@@ -51,7 +51,7 @@
             </li>
 
             <li class="nav-item">
-              <a class="nav-link active" href="blog">Blog</a>
+              <a class="nav-link active" href="blog">Add Project</a>
             </li>
 
             <li class="nav-item">
@@ -84,8 +84,8 @@
         </div>
       </div>
     </nav>
-    <!-- NAV -->
 
+    <!-- NAV -->
     <div class="project-title">
       <br />
       <h1>MY PROJECT</h1>
@@ -97,38 +97,120 @@
       {{/if}}
     </div>
 
+    {{#if error}}
+      <div class="alert alert-danger alert-dismissible fade show" role="alert">
+        {{error}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    {{/if}}
+    <!-- NAV -->
+
+    {{! Tampilkan pesan error jika ada }}
+    {{#if error}}
+      <div class="alert alert-danger" role="alert">
+        {{error}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    {{/if}}
+
+    {{! Tampilkan pesan sukses jika ada }}
+    {{#if success}}
+      <div class="alert alert-success alert-dismissible fade show" role="alert">
+        {{success}}
+        <button
+          type="button"
+          class="btn-close"
+          data-bs-dismiss="alert"
+          aria-label="Close"
+        ></button>
+      </div>
+    {{/if}}
+
     <!-- CONTENT -->
     <section class="grid-container">
 
-      {{#each data}}
-        <div class="grid-item">
-          <div>
-            <img src="{{image}}" alt="ini gambar rusak" />
-            <a href="/blog-detail/{{id}}"><h3>{{title}}</h3></a>
-            <p class="content-text1">{{startdate}} | {{enddate}}</p>
-            <div class="card-text1">
-              {{content}}
-            </div>
-            <p class="content-text3">{{technologies}}</p>
-          </div>
-          <div class="post-btn">
+      {{#if user}}
+        {{#each data}}
+          <div class="grid-item">
             <div>
-              <a
-                href="/edit-blog/{{id}}"
-                type="button"
-                class="btn btn-success"
-              >edit</a>
+              <img src="{{image}}" alt="ini gambar rusak" />
+              <a href="/blog-detail/{{id}}"><h3>{{title}}</h3></a>
+              <h4 class="content-text1">{{startDate}}
+                -
+                {{endDate}}
+                |
+                {{this.user.name}}<br />{{duration}}</h4>
+              <div class="card-text1">
+                {{content}}
+              </div>
+              <p class="content-text3">{{technologies}}</p>
             </div>
-            <div>
-              <a
-                href="/delete-blog/{{id}}"
-                type="button"
-                class="btn btn-danger"
-              >delete</a>
+
+            <div class="post-btn">
+              <div>
+                <a
+                  href="/edit-blog/{{id}}"
+                  type="button"
+                  class="btn btn-success"
+                >edit</a>
+              </div>
+              <div>
+                <a
+                  href="/delete-blog/{{id}}"
+                  type="button"
+                  class="btn btn-danger"
+                >delete</a>
+              </div>
             </div>
           </div>
+        {{/each}}
+
+      {{else}}
+        {{#each data}}
+          <div class="grid-item">
+            <div>
+              <img src="{{image}}" alt="ini gambar rusak" />
+              <a href="/blog-detail/{{id}}"><h3>{{title}}</h3></a>
+              <h4 class="content-text1">{{startDate}}
+                -
+                {{endDate}}<br />{{duration}}</h4>
+              <div class="card-text1">
+                {{content}}
+              </div>
+              <p class="content-text3">{{technologies}}</p>
+            </div>
+
+            <a
+              href="/blog-detail/{{id}}"
+              type="button"
+              class="btn btn-primary"
+            >view</a>
+          </div>
+        {{/each}}
+      {{/if}}
+
+      {{#if user}}
+        <div class="grid-item2">
+          <a href="add-blog">
+            <img
+              href="add-blog"
+              class="plus-img"
+              src="https://static.vecteezy.com/system/resources/previews/011/912/003/non_2x/plus-sign-icon-free-png.png"
+              alt="Plus"
+            />
+          </a>
         </div>
-      {{/each}}
+      {{/if}}
 
     </section>
 

@@ -8,17 +8,19 @@ module.exports = (sequelize, DataTypes) => {
      * The `models/index` file will call this method automatically.
      */
     static associate(models) {
-      // define association here
+      this.belongsTo(models.user);
     }
   }
   blog.init(
     {
       title: DataTypes.STRING,
-      startdate: DataTypes.DATEONLY,
-      enddate: DataTypes.DATEONLY,
+      startDate: DataTypes.DATEONLY,
+      endDate: DataTypes.DATEONLY,
       content: DataTypes.STRING,
       technologies: DataTypes.STRING,
       image: DataTypes.STRING,
+      userId: DataTypes.INTEGER,
+      duration: DataTypes.STRING,
     },
     {
       sequelize,
