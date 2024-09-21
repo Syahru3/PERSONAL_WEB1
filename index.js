@@ -1,3 +1,4 @@
+require('dotenv').config();
 const express = require("express");
 const app = express();
 const port = 3000; //bisa mengganti port
@@ -286,6 +287,13 @@ async function blogDetail(req, res) {
       where: {
         id: id,
       },
+      include: [
+        {
+          model: userModel,
+          as: "user",
+          attributes: ["id", "name", "email"],
+        },
+      ],
     });
 
     // console.log("detail", result);
