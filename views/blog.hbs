@@ -84,8 +84,14 @@
         </div>
       </div>
     </nav>
-
     <!-- NAV -->
+
+    {{#if messages.success}}
+      <div class="alert alert-success" role="alert">
+        {{messages.success}}
+      </div>
+    {{/if}}
+
     <div class="project-title">
       <br />
       <h1>MY PROJECT</h1>
@@ -96,19 +102,6 @@
         </div>
       {{/if}}
     </div>
-
-    {{#if error}}
-      <div class="alert alert-danger alert-dismissible fade show" role="alert">
-        {{error}}
-        <button
-          type="button"
-          class="btn-close"
-          data-bs-dismiss="alert"
-          aria-label="Close"
-        ></button>
-      </div>
-    {{/if}}
-    <!-- NAV -->
 
     {{! Tampilkan pesan error jika ada }}
     {{#if error}}
