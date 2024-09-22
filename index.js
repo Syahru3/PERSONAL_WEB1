@@ -10,8 +10,8 @@ const session = require("express-session");
 const flash = require("express-flash");
 const upload = require("./midlewares/upload-file"); //midleware multer
 
-const blogModel = require("./models").blog;
-const userModel = require("./models").user;
+const blogModel = require("./models").blogs;
+const userModel = require("./models").users;
 
 app.set("view engine", "hbs");
 app.set("views", path.join(__dirname, "views")); //dirname merujuk project dgn nama views
@@ -170,17 +170,19 @@ async function addBlog(req, res) {
   const userId = req.file.path.id;
   const duration = durationTime(startDate, endDate);
 
-  await blogModel.create({
+  const newblog = await blogModel.create({ 
     title: title,
     startDate: startDate,
     endDate: endDate,
     duration: duration,
     content: content,
     image: imagePath,
-    userId: userId,
+    userId: req.session.user.id,
     technologies: technologiesString,
   });
 
+  console.log(newblog)
+  
   res.redirect("/blog"); //langsung menuju page blog
 }
 

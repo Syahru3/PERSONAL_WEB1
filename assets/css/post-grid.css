@@ -86,12 +86,14 @@
   display: flex;
   flex-direction: row;
   gap: 10px;
-
   justify-content: center;
-  align-items: end;
 }
 
-.post-btn button {
+.post-btn a{
+  width: 100%;
+}
+
+/* .post-btn button {
   width: 110px;
   height: 25px;
   cursor: pointer;
@@ -100,7 +102,7 @@
   border: none;
   background-color: black;
   color: white;
-}
+} */
 
 .post-btn button:hover {
   background-color: red;

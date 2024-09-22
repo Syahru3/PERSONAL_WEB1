@@ -35,6 +35,7 @@ module.exports = {
         },
         onDelete: "CASCADE",
         onUpdate: "CASCADE",
+        allowNull: false,
       },
       createdAt: {
         allowNull: false,

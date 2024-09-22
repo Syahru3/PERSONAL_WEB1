@@ -108,25 +108,27 @@
       <div class="card-content">
         <h1>HELLO WORLD!</h1>
         <p>
-          Lorem ipsum, dolor sit amet consectetur adipisicing elit. Qui, vitae
-          obcaecati! Fugiat tenetur blanditiis illo beatae quidem omnis corporis
-          officia nisi dolore officiis, earum pariatur vitae, nihil suscipit.
-          Animi, temporibus?
+          In an increasingly interconnected world, communication and
+          collaboration have become the cornerstones of success across
+          industries. The ability to effectively share ideas, work together
+          toward common goals, and build relationships is critical in both
+          personal and professional contexts. With the rise of digital
+          platforms, individuals and businesses now have unprecedented access to
+          global networks, enabling them to connect and innovate like never
+          before. These advancements have not only transformed the way we
+          interact but have also opened up new avenues for growth and
+          development. 
         </p>
         <p>
-          "Sed ut perspiciatis unde omnis iste natus error sit voluptatem
-          accusantium doloremque laudantium, totam rem aperiam, eaque ipsa quae
-          ab illo inventore veritatis et quasi architecto beatae vitae dicta
-          sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-          aspernatur aut odit aut fugit, sed quia consequuntur magni dolores eos
-          qui ratione voluptatem sequi nesciunt. Neque porro quisquam est, qui
-          dolorem ipsum quia dolor sit amet, consectetur, adipisci velit, sed
-          quia non numquam eius modi tempora incidunt ut labore et dolore magnam
-          aliquam quaerat voluptatem. Ut enim ad minima veniam, quis nostrum
-          exercitationem ullam corporis suscipit laboriosam, nisi ut aliquid ex
-          ea commodi consequatur? Quis autem vel eum iure reprehenderit qui in
-          ea voluptate velit esse quam nihil molestiae consequatur, vel illum
-          qui dolorem eum fugiat quo voluptas nulla pariatur?"
+         At the same time, the challenges facing our world have
+          become more complex, from climate change and resource depletion to
+          economic inequalities and geopolitical tensions. Addressing these
+          issues requires creative solutions and collective action from people
+          across cultures and disciplines. As we navigate this dynamic
+          landscape, there is a growing recognition of the need for
+          sustainability, ethical leadership, and responsible innovation. By
+          harnessing the power of collaboration and technology, we can work
+          together to create a more prosperous and equitable future for all.
         </p>
       </div>
     </div>
@@ -159,20 +161,24 @@
             </div>
 
             <div class="post-btn">
-              <div>
-                <a
-                  href="/edit-blog/{{id}}"
-                  type="button"
-                  class="btn btn-success"
-                >edit</a>
-              </div>
-              <div>
-                <a
-                  href="/delete-blog/{{id}}"
-                  type="button"
-                  class="btn btn-danger"
-                >delete</a>
-              </div>
+              <a
+                href="/blog-detail/{{id}}"
+                type="button"
+                class="btn btn-primary"
+              >view</a>
+
+              <a
+                href="/edit-blog/{{id}}"
+                type="button"
+                class="btn btn-success"
+              >edit</a>
+
+              <a
+                href="/delete-blog/{{id}}"
+                type="button"
+                class="btn btn-danger"
+              >delete</a>
+
             </div>
           </div>
         {{/each}}

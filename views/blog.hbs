@@ -150,21 +150,25 @@
             </div>
 
             <div class="post-btn">
-              <div>
-                <a
-                  href="/edit-blog/{{id}}"
-                  type="button"
-                  class="btn btn-success"
-                >edit</a>
-              </div>
-              <div>
-                <a
-                  href="/delete-blog/{{id}}"
-                  type="button"
-                  class="btn btn-danger"
-                >delete</a>
-              </div>
+              <a
+                href="/blog-detail/{{id}}"
+                type="button"
+                class="btn btn-primary"
+              >view</a>
+
+              <a
+                href="/edit-blog/{{id}}"
+                type="button"
+                class="btn btn-success"
+              >edit</a>
+
+              <a
+                href="/delete-blog/{{id}}"
+                type="button"
+                class="btn btn-danger"
+              >delete</a>
             </div>
+
           </div>
         {{/each}}
 
